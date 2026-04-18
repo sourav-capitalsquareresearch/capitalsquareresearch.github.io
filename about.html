@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Capital Square Research</title>
+    <meta name="description" content="Learn about Capital Square Research, our mission, and our edge in data-driven equity research.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#060B19', 
+                            800: '#0A1128',
+                            700: '#14213D',
+                        },
+                        alpha: {
+                            green: '#00E676', 
+                            hover: '#00C853',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-200 bg-navy-900 selection:bg-alpha-green selection:text-navy-900 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-gray-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <img src="assets/logo-main.png" alt="Capital Square Logo" class="h-10 w-auto">
+                        <div class="flex flex-col justify-center pt-1">
+                            <span class="font-heading font-extrabold text-xl tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                            <div class="flex items-baseline">
+                                <span class="font-heading font-extrabold text-xl tracking-wider text-alpha-green leading-none">SQUARE</span>
+                                <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="about.html" class="text-sm font-medium text-alpha-green transition-colors">About Us</a>
+                    <a href="index.html#methodology" class="text-sm font-medium hover:text-alpha-green transition-colors">Methodology</a>
+                    <a href="index.html#coverage" class="text-sm font-medium hover:text-alpha-green transition-colors">Coverage</a>
+                    <a href="index.html#research" class="text-sm font-medium hover:text-alpha-green transition-colors">Research</a>
+                    <a href="index.html#verification" class="text-sm font-medium hover:text-alpha-green transition-colors">Verification</a>
+                    <a href="internship.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Internship</a>
+                    <a href="index.html#contact" class="text-sm font-medium hover:text-alpha-green transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="pt-32 pb-16 bg-navy-800 border-b border-gray-800 relative overflow-hidden">
+        <div class="absolute right-0 top-0 opacity-[0.03]">
+            <svg width="600" height="600" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#00E676" d="M41.5,-63.5C54.4,-56.3,66,-44.6,73.1,-30.4C80.2,-16.2,82.8,0.5,79.5,16.2C76.2,31.9,67,46.5,54.2,56.5C41.4,66.5,25,71.9,9.2,74.5C-6.6,77.1,-21.8,76.9,-34.5,69.9C-47.2,62.9,-57.4,49.1,-65.2,34.1C-73,19.1,-78.4,2.9,-75.6,-11.9C-72.8,-26.7,-61.8,-40.1,-48.5,-48.1C-35.2,-56.1,-19.6,-58.7,-2.8,-54.6C14,-50.5,28.6,-70.7,41.5,-63.5Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="font-heading text-4xl md:text-5xl font-bold mb-4">About Capital Square</h1>
+            <p class="text-xl text-gray-400 font-light">Where fundamental analysis meets quantitative rigor.</p>
+        </div>
+    </header>
+
+    <!-- About Content -->
+    <main class="py-16 flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Our Mission -->
+            <section class="mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded bg-navy-700 flex items-center justify-center text-alpha-green">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h2 class="font-heading text-3xl font-bold text-white">Our Mission</h2>
+                </div>
+                <div class="glass-panel p-8 rounded-xl border border-gray-800">
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        At Capital Square Research, our mission is to deliver <strong class="text-white font-medium">precision equity research</strong> by eliminating the inefficiencies of traditional fundamental analysis. We believe that the future of finance belongs to those who can seamlessly blend deep industry knowledge with automated, data-driven extraction. We focus on high-growth, high-complexity sectors where information asymmetry provides the greatest opportunity for alpha generation.
+                    </p>
+                </div>
+            </section>
+
+            <!-- The Edge -->
+            <section class="mb-16">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded bg-navy-700 flex items-center justify-center text-alpha-green">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h2 class="font-heading text-3xl font-bold text-white">The Capital Square Edge</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Edge 1 -->
+                    <div class="bg-navy-800/80 p-6 rounded-lg border border-gray-700 hover:border-alpha-green/40 transition-colors">
+                        <h3 class="font-heading text-xl font-semibold mb-3 text-white">Alternative Data Integration</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            We look beyond standard 10-Ks. Our proprietary pipelines scrape web traffic, supply chain movements, and pricing APIs to build a holistic picture before earnings are even announced.
+                        </p>
+                    </div>
+                    
+                    <!-- Edge 2 -->
+                    <div class="bg-navy-800/80 p-6 rounded-lg border border-gray-700 hover:border-alpha-green/40 transition-colors">
+                        <h3 class="font-heading text-xl font-semibold mb-3 text-white">Dynamic Modeling</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Our financial models are not static spreadsheets. They are dynamic engines that flex with macro-economic shocks, interest rate shifts, and real-time operational metrics.
+                        </p>
+                    </div>
+
+                    <!-- Edge 3 -->
+                    <div class="bg-navy-800/80 p-6 rounded-lg border border-gray-700 hover:border-alpha-green/40 transition-colors">
+                        <h3 class="font-heading text-xl font-semibold mb-3 text-white">Sector Specialization</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            We don't cover everything. We specialize fiercely in Hospitals, Logistics, Data Centers, and Consumer Durables—sectors where capital intensity meets rapid technological disruption.
+                        </p>
+                    </div>
+
+                    <!-- Edge 4 -->
+                    <div class="bg-navy-800/80 p-6 rounded-lg border border-gray-700 hover:border-alpha-green/40 transition-colors">
+                        <h3 class="font-heading text-xl font-semibold mb-3 text-white">Institutional Grade</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Every report, every model, and every thesis is scrutinized under an institutional lens. We optimize for high conviction, asymmetrical risk/reward opportunities.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contact CTA -->
+            <section class="text-center mt-12 py-12 border-t border-gray-800">
+                <h3 class="font-heading text-2xl font-bold mb-4 text-white">Partner With Us</h3>
+                <p class="text-gray-400 mb-8 max-w-xl mx-auto">
+                    Interested in our research, seeking advisory services, or want to explore synergies? We are always open to connecting with aligned institutions.
+                </p>
+                <a href="mailto:admin@capitalsquareresearch.in" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-navy-900 font-semibold rounded hover:bg-gray-200 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Contact Our Team
+                </a>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-12 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col justify-center pt-1">
+                <span class="font-heading font-extrabold text-lg tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                <div class="flex items-baseline">
+                    <span class="font-heading font-extrabold text-lg tracking-wider text-alpha-green leading-none">SQUARE</span>
+                    <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                </div>
+            </div>
+            
+            <div class="text-gray-400 text-sm">
+                &copy; <span id="year"></span> Capital Square Research. All rights reserved.
+            </div>
+            
+            <div class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+                <svg class="w-5 h-5 text-gray-500 group-hover:text-alpha-green transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <a href="mailto:admin@capitalsquareresearch.in" class="text-sm font-medium">admin@capitalsquareresearch.in</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
