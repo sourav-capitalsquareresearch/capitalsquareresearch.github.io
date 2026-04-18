@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Capital Square Research</title>
+    <meta name="description" content="Insights, sectoral deep-dives, and financial modeling resources from Capital Square Research.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#060B19', 
+                            800: '#0A1128',
+                            700: '#14213D',
+                        },
+                        alpha: {
+                            green: '#00E676', 
+                            hover: '#00C853',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-200 bg-navy-900 selection:bg-alpha-green selection:text-navy-900 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-gray-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <img src="assets/logo-main.png" alt="Capital Square Logo" class="h-10 w-auto">
+                        <div class="flex flex-col justify-center pt-1">
+                            <span class="font-heading font-extrabold text-xl tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                            <div class="flex items-baseline">
+                                <span class="font-heading font-extrabold text-xl tracking-wider text-alpha-green leading-none">SQUARE</span>
+                                <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="about.html" class="text-sm font-medium hover:text-alpha-green transition-colors">About Us</a>
+                    <a href="index.html#methodology" class="text-sm font-medium hover:text-alpha-green transition-colors">Methodology</a>
+                    <a href="index.html#coverage" class="text-sm font-medium hover:text-alpha-green transition-colors">Coverage</a>
+                    <a href="index.html#research" class="text-sm font-medium hover:text-alpha-green transition-colors">Research</a>
+                    <a href="blog.html" class="text-sm font-medium text-alpha-green transition-colors">Blog</a>
+                    <a href="index.html#verification" class="text-sm font-medium hover:text-alpha-green transition-colors">Verification</a>
+                    <a href="internship.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Internship</a>
+                    <a href="index.html#contact" class="text-sm font-medium hover:text-alpha-green transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="pt-32 pb-16 bg-navy-800 border-b border-gray-800 relative overflow-hidden">
+        <div class="absolute right-0 top-0 opacity-[0.03]">
+            <svg width="600" height="600" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#00E676" d="M41.5,-63.5C54.4,-56.3,66,-44.6,73.1,-30.4C80.2,-16.2,82.8,0.5,79.5,16.2C76.2,31.9,67,46.5,54.2,56.5C41.4,66.5,25,71.9,9.2,74.5C-6.6,77.1,-21.8,76.9,-34.5,69.9C-47.2,62.9,-57.4,49.1,-65.2,34.1C-73,19.1,-78.4,2.9,-75.6,-11.9C-72.8,-26.7,-61.8,-40.1,-48.5,-48.1C-35.2,-56.1,-19.6,-58.7,-2.8,-54.6C14,-50.5,28.6,-70.7,41.5,-63.5Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="font-heading text-4xl md:text-5xl font-bold mb-4">Our Insights</h1>
+            <p class="text-xl text-gray-400 font-light">Sector deep-dives, unit economics, and fundamental modeling.</p>
+        </div>
+    </header>
+
+    <!-- Blog Grid -->
+    <main class="py-16 flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Blog Card 1 -->
+                <div class="glass-panel p-6 rounded-xl border border-gray-800 hover:border-alpha-green/30 transition-colors duration-300 flex flex-col h-full group">
+                    <div class="mb-4">
+                        <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-alpha-green/10 text-alpha-green border border-alpha-green/20">Sector Deep-dive</span>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-alpha-green transition-colors">Understanding WACC: Why Capital Structure Matters for Hospitals</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">An analysis of cost of capital in healthcare and how debt leverage impacts long-term profitability.</p>
+                    <a href="blog/wacc-analysis/" class="text-sm font-medium text-alpha-green hover:text-white transition-colors flex items-center gap-2 mt-auto">
+                        Read More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Blog Card 2 -->
+                <div class="glass-panel p-6 rounded-xl border border-gray-800 hover:border-alpha-green/30 transition-colors duration-300 flex flex-col h-full group">
+                    <div class="mb-4">
+                        <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">Unit Economics</span>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-alpha-green transition-colors">Unit Economics in Logistics: A Deep Dive into Last-Mile Delivery Costs</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">Breaking down the operational metrics and margin pressures in the evolving logistics space.</p>
+                    <a href="blog/logistics-unit-economics/" class="text-sm font-medium text-alpha-green hover:text-white transition-colors flex items-center gap-2 mt-auto">
+                        Read More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Blog Card 3 -->
+                <div class="glass-panel p-6 rounded-xl border border-gray-800 hover:border-alpha-green/30 transition-colors duration-300 flex flex-col h-full group">
+                    <div class="mb-4">
+                        <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">Infrastructure</span>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-alpha-green transition-colors">The Rise of Data Centers: Analyzing the Infrastructure Moat</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">Exploring the high barriers to entry and massive scale requirements in data center development.</p>
+                    <a href="blog/data-centers-moat/" class="text-sm font-medium text-alpha-green hover:text-white transition-colors flex items-center gap-2 mt-auto">
+                        Read More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Blog Card 4 -->
+                <div class="glass-panel p-6 rounded-xl border border-gray-800 hover:border-alpha-green/30 transition-colors duration-300 flex flex-col h-full group">
+                    <div class="mb-4">
+                        <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Valuation Models</span>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-alpha-green transition-colors">DCF Valuation 101: Moving from Revenue Projections to Free Cash Flow</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">A step-by-step methodology for constructing robust Discounted Cash Flow models for growth equities.</p>
+                    <a href="blog/dcf-valuation-101/" class="text-sm font-medium text-alpha-green hover:text-white transition-colors flex items-center gap-2 mt-auto">
+                        Read More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Blog Card 5 -->
+                <div class="glass-panel p-6 rounded-xl border border-gray-800 hover:border-alpha-green/30 transition-colors duration-300 flex flex-col h-full group">
+                    <div class="mb-4">
+                        <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">Macro Trends</span>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-white mb-3 group-hover:text-alpha-green transition-colors">Consumer Durables: How Interest Rate Cycles Impact Sales Volume</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">Correlating central bank policy shifts with retail demand and inventory cycles in the consumer durables space.</p>
+                    <a href="blog/consumer-durables-rates/" class="text-sm font-medium text-alpha-green hover:text-white transition-colors flex items-center gap-2 mt-auto">
+                        Read More <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-12 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col justify-center pt-1">
+                <span class="font-heading font-extrabold text-lg tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                <div class="flex items-baseline">
+                    <span class="font-heading font-extrabold text-lg tracking-wider text-alpha-green leading-none">SQUARE</span>
+                    <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                </div>
+            </div>
+            
+            <div class="text-gray-400 text-sm">
+                &copy; <span id="year"></span> Capital Square Research. All rights reserved.
+            </div>
+            
+            <div class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+                <svg class="w-5 h-5 text-gray-500 group-hover:text-alpha-green transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <a href="mailto:souravmondal@capitalsquareresearch.in" class="text-sm font-medium">souravmondal@capitalsquareresearch.in</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Economics in Logistics | Capital Square Research</title>
+    <meta name="description" content="Breaking down the operational metrics and margin pressures in the evolving logistics space.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#060B19', 
+                            800: '#0A1128',
+                            700: '#14213D',
+                        },
+                        alpha: {
+                            green: '#00E676', 
+                            hover: '#00C853',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-200 bg-navy-900 selection:bg-alpha-green selection:text-navy-900 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-gray-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <img src="../../assets/logo-main.png" alt="Capital Square Logo" class="h-10 w-auto">
+                        <div class="flex flex-col justify-center pt-1">
+                            <span class="font-heading font-extrabold text-xl tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                            <div class="flex items-baseline">
+                                <span class="font-heading font-extrabold text-xl tracking-wider text-alpha-green leading-none">SQUARE</span>
+                                <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../../about.html" class="text-sm font-medium hover:text-alpha-green transition-colors">About Us</a>
+                    <a href="../../index.html#methodology" class="text-sm font-medium hover:text-alpha-green transition-colors">Methodology</a>
+                    <a href="../../index.html#coverage" class="text-sm font-medium hover:text-alpha-green transition-colors">Coverage</a>
+                    <a href="../../index.html#research" class="text-sm font-medium hover:text-alpha-green transition-colors">Research</a>
+                    <a href="../../blog.html" class="text-sm font-medium text-alpha-green transition-colors">Blog</a>
+                    <a href="../../index.html#verification" class="text-sm font-medium hover:text-alpha-green transition-colors">Verification</a>
+                    <a href="../../internship.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Internship</a>
+                    <a href="../../index.html#contact" class="text-sm font-medium hover:text-alpha-green transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-16 bg-navy-800 border-b border-gray-800 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="mb-6 flex items-center gap-4">
+                <a href="../../blog.html" class="text-alpha-green hover:text-white transition-colors text-sm font-medium flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Insights
+                </a>
+                <span class="text-gray-600">|</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">Unit Economics</span>
+            </div>
+            <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">Unit Economics in Logistics: A Deep Dive into Last-Mile Delivery Costs</h1>
+            <div class="flex items-center gap-4 text-sm text-gray-400 font-mono">
+                <span>By Research Team</span>
+                <span>•</span>
+                <span>6 min read</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="py-16 flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Key Takeaways Box -->
+            <div class="glass-panel p-8 rounded-xl border border-alpha-green/30 mb-12 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-alpha-green"></div>
+                <h3 class="font-heading text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-alpha-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Key Takeaways
+                </h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Last-mile delivery accounts for up to 53% of total shipping costs.</li>
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Route density and drop size are the primary levers for margin expansion.</li>
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Automation and AI-driven routing are shifting cost structures from variable to fixed.</li>
+                </ul>
+            </div>
+
+            <!-- Content Body -->
+            <div class="prose prose-invert prose-lg max-w-none">
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    The logistics sector is undergoing a massive transformation, driven largely by the e-commerce boom and changing consumer expectations for rapid delivery. However, the true battleground for profitability lies in the "last mile"—the final leg of a product's journey from a fulfillment center to the end customer.
+                </p>
+
+                <!-- Chart Placeholder -->
+                <div class="my-12 glass-panel p-6 rounded-xl border border-gray-800 text-center relative h-80 flex flex-col items-center justify-center group overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzMzMyIvPjwvc3ZnPg==')] opacity-20"></div>
+                    <svg class="w-16 h-16 text-gray-600 mb-4 group-hover:text-blue-400 transition-colors duration-500 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <p class="text-gray-400 font-mono text-sm relative z-10">[ Interactive Chart Placeholder: Cost Breakdown of Last-Mile Delivery ]</p>
+                </div>
+
+                <h2 class="font-heading text-2xl font-bold text-white mt-10 mb-4">The Density Problem</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Unlike line-haul logistics, where costs are spread over massive volumes moving between few nodes, last-mile is inherently fragmented. The cost per delivery is highly sensitive to route density (deliveries per square mile). A 10% increase in density can often translate to a 15-20% improvement in unit economics due to reduced fuel consumption and driver time per package.
+                </p>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-12 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col justify-center pt-1">
+                <span class="font-heading font-extrabold text-lg tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                <div class="flex items-baseline">
+                    <span class="font-heading font-extrabold text-lg tracking-wider text-alpha-green leading-none">SQUARE</span>
+                    <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                </div>
+            </div>
+            <div class="text-gray-400 text-sm">
+                &copy; <span id="year"></span> Capital Square Research. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

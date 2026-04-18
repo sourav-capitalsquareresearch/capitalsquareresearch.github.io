@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding WACC | Capital Square Research</title>
+    <meta name="description" content="An analysis of cost of capital in healthcare and how debt leverage impacts long-term profitability.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#060B19', 
+                            800: '#0A1128',
+                            700: '#14213D',
+                        },
+                        alpha: {
+                            green: '#00E676', 
+                            hover: '#00C853',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-200 bg-navy-900 selection:bg-alpha-green selection:text-navy-900 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-gray-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <img src="../../assets/logo-main.png" alt="Capital Square Logo" class="h-10 w-auto">
+                        <div class="flex flex-col justify-center pt-1">
+                            <span class="font-heading font-extrabold text-xl tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                            <div class="flex items-baseline">
+                                <span class="font-heading font-extrabold text-xl tracking-wider text-alpha-green leading-none">SQUARE</span>
+                                <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../../about.html" class="text-sm font-medium hover:text-alpha-green transition-colors">About Us</a>
+                    <a href="../../index.html#methodology" class="text-sm font-medium hover:text-alpha-green transition-colors">Methodology</a>
+                    <a href="../../index.html#coverage" class="text-sm font-medium hover:text-alpha-green transition-colors">Coverage</a>
+                    <a href="../../index.html#research" class="text-sm font-medium hover:text-alpha-green transition-colors">Research</a>
+                    <a href="../../blog.html" class="text-sm font-medium text-alpha-green transition-colors">Blog</a>
+                    <a href="../../index.html#verification" class="text-sm font-medium hover:text-alpha-green transition-colors">Verification</a>
+                    <a href="../../internship.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Internship</a>
+                    <a href="../../index.html#contact" class="text-sm font-medium hover:text-alpha-green transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-16 bg-navy-800 border-b border-gray-800 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="mb-6 flex items-center gap-4">
+                <a href="../../blog.html" class="text-alpha-green hover:text-white transition-colors text-sm font-medium flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Insights
+                </a>
+                <span class="text-gray-600">|</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-alpha-green/10 text-alpha-green border border-alpha-green/20">Sector Deep-dive</span>
+            </div>
+            <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">Understanding WACC: Why Capital Structure Matters for Hospitals</h1>
+            <div class="flex items-center gap-4 text-sm text-gray-400 font-mono">
+                <span>By Research Team</span>
+                <span>•</span>
+                <span>8 min read</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="py-16 flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Key Takeaways Box -->
+            <div class="glass-panel p-8 rounded-xl border border-alpha-green/30 mb-12 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-alpha-green"></div>
+                <h3 class="font-heading text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-alpha-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Key Takeaways
+                </h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Hospital operators are highly capital intensive, making WACC a primary driver of DCF valuation.</li>
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Optimizing the debt-to-equity ratio can significantly lower the overall cost of capital.</li>
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Rising interest rates disproportionately impact highly leveraged healthcare facilities through higher interest burdens.</li>
+                </ul>
+            </div>
+
+            <!-- Content Body -->
+            <div class="prose prose-invert prose-lg max-w-none">
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    In the highly capital-intensive healthcare sector, understanding the Weighted Average Cost of Capital (WACC) is not merely an academic exercise—it is the bedrock of fundamental valuation. Hospitals require massive upfront capital expenditures (CapEx) for real estate, state-of-the-art medical equipment, and specialized personnel long before they see a return on investment.
+                </p>
+
+                <h2 class="font-heading text-2xl font-bold text-white mt-10 mb-4">The Components of WACC</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    WACC is calculated by multiplying the cost of each capital component (equity and debt) by its proportional weight and then summing the results. For hospitals, the formula takes on unique significance due to their reliance on debt financing for expansion and equipment upgrades.
+                </p>
+
+                <!-- Chart Placeholder -->
+                <div class="my-12 glass-panel p-6 rounded-xl border border-gray-800 text-center relative h-80 flex flex-col items-center justify-center group overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzMzMyIvPjwvc3ZnPg==')] opacity-20"></div>
+                    <svg class="w-16 h-16 text-gray-600 mb-4 group-hover:text-alpha-green transition-colors duration-500 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                    <p class="text-gray-400 font-mono text-sm relative z-10">[ Interactive Chart Placeholder: WACC Sensitivity Analysis ]</p>
+                    <div class="mt-4 flex gap-2 relative z-10">
+                        <div class="h-2 w-16 bg-alpha-green rounded-full"></div>
+                        <div class="h-2 w-8 bg-blue-500 rounded-full"></div>
+                        <div class="h-2 w-24 bg-purple-500 rounded-full"></div>
+                    </div>
+                </div>
+
+                <h2 class="font-heading text-2xl font-bold text-white mt-10 mb-4">Why Leverage Matters</h2>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    Because debt is generally cheaper than equity (due to the tax-deductibility of interest payments), adding debt can lower a hospital's WACC. However, this introduces financial risk. As leverage increases, equity investors demand a higher premium for the added risk, eventually causing the WACC to increase if the company becomes over-leveraged. Finding the optimal capital structure is the key to maximizing enterprise value.
+                </p>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    In our internal models, we track the spread between Return on Invested Capital (ROIC) and WACC. A hospital consistently generating ROIC > WACC is creating value, while one where WACC > ROIC is destroying it, regardless of top-line revenue growth.
+                </p>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-12 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col justify-center pt-1">
+                <span class="font-heading font-extrabold text-lg tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                <div class="flex items-baseline">
+                    <span class="font-heading font-extrabold text-lg tracking-wider text-alpha-green leading-none">SQUARE</span>
+                    <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                </div>
+            </div>
+            
+            <div class="text-gray-400 text-sm">
+                &copy; <span id="year"></span> Capital Square Research. All rights reserved.
+            </div>
+            
+            <div class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+                <svg class="w-5 h-5 text-gray-500 group-hover:text-alpha-green transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <a href="mailto:souravmondal@capitalsquareresearch.in" class="text-sm font-medium">souravmondal@capitalsquareresearch.in</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCF Valuation 101 | Capital Square Research</title>
+    <meta name="description" content="A step-by-step methodology for constructing robust Discounted Cash Flow models.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#060B19', 
+                            800: '#0A1128',
+                            700: '#14213D',
+                        },
+                        alpha: {
+                            green: '#00E676', 
+                            hover: '#00C853',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-200 bg-navy-900 selection:bg-alpha-green selection:text-navy-900 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-gray-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <img src="../../assets/logo-main.png" alt="Capital Square Logo" class="h-10 w-auto">
+                        <div class="flex flex-col justify-center pt-1">
+                            <span class="font-heading font-extrabold text-xl tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                            <div class="flex items-baseline">
+                                <span class="font-heading font-extrabold text-xl tracking-wider text-alpha-green leading-none">SQUARE</span>
+                                <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../../about.html" class="text-sm font-medium hover:text-alpha-green transition-colors">About Us</a>
+                    <a href="../../index.html#methodology" class="text-sm font-medium hover:text-alpha-green transition-colors">Methodology</a>
+                    <a href="../../index.html#coverage" class="text-sm font-medium hover:text-alpha-green transition-colors">Coverage</a>
+                    <a href="../../index.html#research" class="text-sm font-medium hover:text-alpha-green transition-colors">Research</a>
+                    <a href="../../blog.html" class="text-sm font-medium text-alpha-green transition-colors">Blog</a>
+                    <a href="../../index.html#verification" class="text-sm font-medium hover:text-alpha-green transition-colors">Verification</a>
+                    <a href="../../internship.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Internship</a>
+                    <a href="../../index.html#contact" class="text-sm font-medium hover:text-alpha-green transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-16 bg-navy-800 border-b border-gray-800 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="mb-6 flex items-center gap-4">
+                <a href="../../blog.html" class="text-alpha-green hover:text-white transition-colors text-sm font-medium flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Insights
+                </a>
+                <span class="text-gray-600">|</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Valuation Models</span>
+            </div>
+            <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">DCF Valuation 101: Moving from Revenue Projections to Free Cash Flow</h1>
+            <div class="flex items-center gap-4 text-sm text-gray-400 font-mono">
+                <span>By Research Team</span>
+                <span>•</span>
+                <span>12 min read</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="py-16 flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Key Takeaways Box -->
+            <div class="glass-panel p-8 rounded-xl border border-alpha-green/30 mb-12 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-alpha-green"></div>
+                <h3 class="font-heading text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-alpha-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Key Takeaways
+                </h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Free Cash Flow (FCF) is the ultimate measure of a company's ability to generate value, stripping away accounting nuances.</li>
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Terminal value often accounts for 60-80% of a DCF valuation, highlighting the importance of the perpetual growth rate assumption.</li>
+                    <li class="flex items-start"><span class="text-alpha-green mr-2 mt-1">▹</span> Sensitivity analysis is crucial to understand the range of implied share prices under various macro scenarios.</li>
+                </ul>
+            </div>
+
+            <!-- Content Body -->
+            <div class="prose prose-invert prose-lg max-w-none">
+                <p class="text-gray-300 leading-relaxed mb-6">
+                    While multiples like P/E or EV/EBITDA provide a quick snapshot of relative valuation, the Discounted Cash Flow (DCF) model remains the gold standard for absolute valuation. It forces the analyst to think explicitly about the drivers of a business over the long term.
+                </p>
+
+                <!-- Chart Placeholder -->
+                <div class="my-12 glass-panel p-6 rounded-xl border border-gray-800 text-center relative h-80 flex flex-col items-center justify-center group overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzMzMyIvPjwvc3ZnPg==')] opacity-20"></div>
+                    <svg class="w-16 h-16 text-gray-600 mb-4 group-hover:text-emerald-400 transition-colors duration-500 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                    <p class="text-gray-400 font-mono text-sm relative z-10">[ Interactive Chart Placeholder: FCFF Build-up Bridge ]</p>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-12 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col justify-center pt-1">
+                <span class="font-heading font-extrabold text-lg tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                <div class="flex items-baseline">
+                    <span class="font-heading font-extrabold text-lg tracking-wider text-alpha-green leading-none">SQUARE</span>
+                    <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                </div>
+            </div>
+            <div class="text-gray-400 text-sm">
+                &copy; <span id="year"></span> Capital Square Research. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
