@@ -130,11 +130,11 @@
                 </button>
             </div>
 
-            <!-- Certificate Wrapper (For layout constraint) -->
-            <div class="overflow-x-auto pb-8">
+            <!-- Certificate Wrapper -->
+            <div id="cert-wrapper" class="w-full flex justify-center overflow-hidden pb-8">
                 <!-- Actual Certificate Template (Hidden by default, shown on success) -->
-                <!-- We force a fixed width so the PDF generation is consistent regardless of screen size -->
-                <div id="certificate-template" class="hidden bg-navy-900 w-[1056px] h-[816px] mx-auto p-6 text-white border border-gray-800 box-border relative overflow-hidden">
+                <!-- It's always 1056x816 natively, but visually scaled via JavaScript to fit small screens -->
+                <div id="certificate-template" class="hidden bg-navy-900 w-[1056px] h-[816px] shrink-0 origin-top p-6 text-white border border-gray-800 box-border relative overflow-hidden">
                     
                     <!-- Decorative Background Orbs -->
                     <div class="absolute top-0 right-0 -mr-32 -mt-32 w-[600px] h-[600px] bg-alpha-green opacity-5 rounded-full blur-[100px] pointer-events-none"></div>
@@ -299,11 +299,27 @@
             // Show certificate and controls
             template.classList.remove('hidden');
             controls.classList.remove('hidden');
+            
+            // Scale it visually to fit the screen
+            scaleCertificate();
         }
+
+        function scaleCertificate() {
+            const wrapper = document.getElementById('cert-wrapper');
+            const template = document.getElementById('certificate-template');
+            if (template && !template.classList.contains('hidden')) {
+                // Calculate scale to fit wrapper width
+                const scale = Math.min(1, wrapper.clientWidth / 1056);
+                template.style.transform = `scale(${scale})`;
+                // Adjust wrapper height to match scaled template height
+                wrapper.style.height = `${(816 * scale) + 32}px`; // +32 for pb-8 padding
+            }
+        }
+        window.addEventListener('resize', scaleCertificate);
 
         // PDF Generation
         document.getElementById('download-pdf-btn').addEventListener('click', () => {
-            const element = document.getElementById('certificate-template');
+            const originalElement = document.getElementById('certificate-template');
             const name = document.getElementById('cert-name').textContent;
             const btn = document.getElementById('download-pdf-btn');
             
@@ -311,6 +327,20 @@
             const originalText = btn.innerHTML;
             btn.innerHTML = 'Generating PDF...';
             btn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            // Create an off-screen clone to guarantee perfect rendering regardless of viewport/scaling
+            const clone = originalElement.cloneNode(true);
+            const container = document.createElement('div');
+            container.style.position = 'absolute';
+            container.style.top = '-9999px';
+            container.style.left = '-9999px';
+            container.appendChild(clone);
+            document.body.appendChild(container);
+
+            // Reset styles on the clone to ensure a perfect 1056x816 unscaled capture
+            clone.style.transform = 'none';
+            clone.style.width = '1056px';
+            clone.style.height = '816px';
             
             // html2pdf configuration
             const opt = {
@@ -321,12 +351,9 @@
                 jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
             };
 
-            // Temporarily ensure it's visible perfectly for capture
-            element.style.transform = 'none';
-            window.scrollTo(0, 0); // Crucial for perfect PDF alignment
-
-            html2pdf().set(opt).from(element).save().then(() => {
-                // Restore button
+            html2pdf().set(opt).from(clone).save().then(() => {
+                // Cleanup and restore button
+                document.body.removeChild(container);
                 btn.innerHTML = originalText;
                 btn.classList.remove('opacity-75', 'cursor-not-allowed');
             });
