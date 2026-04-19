@@ -52,14 +52,11 @@
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Home</a>
                     <a href="about.html" class="text-sm font-medium hover:text-alpha-green transition-colors">About Us</a>
-                    <a href="index.html#methodology" class="text-sm font-medium hover:text-alpha-green transition-colors">Methodology</a>
-                    <a href="index.html#coverage" class="text-sm font-medium hover:text-alpha-green transition-colors">Coverage</a>
-                    <a href="index.html#research" class="text-sm font-medium hover:text-alpha-green transition-colors">Research</a>
                     <a href="blog.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Blog</a>
-                    <a href="index.html#verification" class="text-sm font-medium hover:text-alpha-green transition-colors">Verification</a>
-                    <a href="internship.html" class="text-sm font-medium text-alpha-green transition-colors">Internship</a>
-                    <a href="index.html#contact" class="text-sm font-medium hover:text-alpha-green transition-colors">Contact</a>
+                    <a href="updates.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Updates</a>
+                    <a href="internship.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Internship</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="flex md:hidden items-center">
@@ -74,14 +71,11 @@
         <!-- Mobile Menu -->
         <div class="md:hidden hidden bg-navy-800 border-b border-gray-800 absolute w-full" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-2xl">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Home</a>
                 <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">About Us</a>
-                <a href="index.html#methodology" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Methodology</a>
-                <a href="index.html#coverage" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Coverage</a>
-                <a href="index.html#research" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Research</a>
                 <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Blog</a>
-                <a href="index.html#verification" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Verification</a>
+                <a href="updates.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Updates</a>
                 <a href="internship.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Internship</a>
-                <a href="index.html#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Contact</a>
             </div>
         </div>
     </nav>
@@ -268,6 +262,36 @@
 
         </div>
     </main>
+
+    <!-- Verification Portal -->
+    <section id="verification" class="py-24 bg-navy-900 relative overflow-hidden border-t border-gray-800/50">
+        <div class="absolute right-0 bottom-0 opacity-[0.02]">
+            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#00E676" d="M45.7,-76.1C58.9,-69.3,69.2,-55.4,76.5,-41.1C83.8,-26.8,88.1,-12.1,86.2,2C84.3,16.1,76.2,29.5,67.1,41.4C58,53.3,47.9,63.7,35.1,71.2C22.3,78.7,6.8,83.3,-7.9,81.3C-22.6,79.3,-36.5,70.7,-48.9,60.6C-61.3,50.5,-72.2,38.9,-78.9,24.8C-85.6,10.7,-88.1,-5.9,-84.6,-21.3C-81.1,-36.7,-71.6,-50.9,-59,-58.5C-46.4,-66.1,-30.7,-67.1,-16.5,-69.1C-2.3,-71.1,10.4,-74.1,23.5,-77.3C36.6,-80.5,50.1,-83.9,45.7,-76.1Z" transform="translate(100 100) scale(1.1)" />
+            </svg>
+        </div>
+
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="font-heading text-3xl font-bold mb-4">Intern Certificate Verification</h2>
+            <p class="text-gray-400 mb-10 text-lg">Enter the unique certification ID to verify authenticity.</p>
+            
+            <form class="flex flex-col sm:flex-row gap-4 justify-center" onsubmit="event.preventDefault(); alert('Verification system API currently offline.');">
+                <input 
+                    type="text" 
+                    placeholder="e.g. CSR-2024-XXXX" 
+                    class="w-full sm:w-96 bg-navy-900 border border-gray-700 text-white font-mono px-6 py-4 rounded focus:outline-none focus:border-alpha-green focus:ring-1 focus:ring-alpha-green transition-all placeholder-gray-600"
+                    required
+                >
+                <button type="submit" class="px-8 py-4 bg-white text-navy-900 font-semibold rounded hover:bg-gray-200 transition-colors whitespace-nowrap">
+                    Verify ID
+                </button>
+            </form>
+            <div class="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                Secure Portal
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-navy-900 py-12 border-t border-gray-800">
