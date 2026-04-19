@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Verification | Capital Square Research</title>
+    <meta name="description" content="Verify internship certificates issued by Capital Square Research.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="certificates/database.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#060B19', 
+                            800: '#0A1128',
+                            700: '#14213D',
+                        },
+                        alpha: {
+                            green: '#00E676', 
+                            hover: '#00C853',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-200 bg-navy-900 selection:bg-alpha-green selection:text-navy-900 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-gray-800/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <img src="assets/logo-main.png" alt="Capital Square Logo" class="h-10 w-auto">
+                        <div class="flex flex-col justify-center pt-1">
+                            <span class="font-heading font-extrabold text-xl tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                            <div class="flex items-baseline">
+                                <span class="font-heading font-extrabold text-xl tracking-wider text-alpha-green leading-none">SQUARE</span>
+                                <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Home</a>
+                    <a href="about.html" class="text-sm font-medium hover:text-alpha-green transition-colors">About Us</a>
+                    <a href="blog.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Blog</a>
+                    <a href="updates.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Updates</a>
+                    <a href="internship.html" class="text-sm font-medium hover:text-alpha-green transition-colors">Internship</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex md:hidden items-center">
+                    <button type="button" class="mobile-menu-button text-gray-400 hover:text-white focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-navy-800 border-b border-gray-800 absolute w-full" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-2xl">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Home</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">About Us</a>
+                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Blog</a>
+                <a href="updates.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Updates</a>
+                <a href="internship.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-alpha-green hover:bg-gray-800">Internship</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header & Search -->
+    <header class="pt-32 pb-16 bg-navy-900 border-b border-gray-800 relative overflow-hidden">
+        <div class="absolute right-0 top-0 opacity-[0.03]">
+            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#00E676" d="M45.7,-76.1C58.9,-69.3,69.2,-55.4,76.5,-41.1C83.8,-26.8,88.1,-12.1,86.2,2C84.3,16.1,76.2,29.5,67.1,41.4C58,53.3,47.9,63.7,35.1,71.2C22.3,78.7,6.8,83.3,-7.9,81.3C-22.6,79.3,-36.5,70.7,-48.9,60.6C-61.3,50.5,-72.2,38.9,-78.9,24.8C-85.6,10.7,-88.1,-5.9,-84.6,-21.3C-81.1,-36.7,-71.6,-50.9,-59,-58.5C-46.4,-66.1,-30.7,-67.1,-16.5,-69.1C-2.3,-71.1,10.4,-74.1,23.5,-77.3C36.6,-80.5,50.1,-83.9,45.7,-76.1Z" transform="translate(100 100) scale(1.1)" />
+            </svg>
+        </div>
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="font-heading text-3xl font-bold mb-4">Intern Certificate Verification</h1>
+            <p class="text-gray-400 mb-10 text-lg">Enter the unique certification ID to verify authenticity and generate documentation.</p>
+            
+            <form id="verification-form" class="flex flex-col sm:flex-row gap-4 justify-center">
+                <input 
+                    type="text" 
+                    id="cert-id-input"
+                    placeholder="e.g. CSR2026A7B" 
+                    class="w-full sm:w-96 bg-navy-800 border border-gray-700 text-white font-mono px-6 py-4 rounded focus:outline-none focus:border-alpha-green focus:ring-1 focus:ring-alpha-green transition-all placeholder-gray-600 uppercase"
+                    required
+                >
+                <button type="submit" class="px-8 py-4 bg-alpha-green hover:bg-alpha-hover text-navy-900 font-semibold rounded transition-colors duration-300 shadow-[0_0_15px_rgba(0,230,118,0.3)] whitespace-nowrap">
+                    Verify ID
+                </button>
+            </form>
+
+            <!-- Status Message Container -->
+            <div id="status-message" class="mt-6 font-mono text-sm hidden"></div>
+        </div>
+    </header>
+
+    <!-- Certificate Results Area -->
+    <main class="py-16 flex-grow bg-navy-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Result Controls (Hidden by default) -->
+            <div id="result-controls" class="hidden text-center mb-10">
+                <p class="text-alpha-green font-mono mb-4 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    VERIFICATION SUCCESSFUL
+                </p>
+                <button id="download-pdf-btn" class="px-6 py-3 bg-white hover:bg-gray-200 text-navy-900 font-semibold rounded transition-colors duration-300 flex items-center gap-2 mx-auto">
+                    Download as PDF
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </button>
+            </div>
+
+            <!-- Certificate Wrapper (For layout constraint) -->
+            <div class="overflow-x-auto pb-8">
+                <!-- Actual Certificate Template (Hidden by default, shown on success) -->
+                <!-- We force a fixed width so the PDF generation is consistent regardless of screen size -->
+                <div id="certificate-template" class="hidden bg-white w-[800px] h-[600px] mx-auto relative p-12 text-navy-900 shadow-2xl">
+                    <!-- Outer Border -->
+                    <div class="absolute inset-4 border-2 border-navy-900 p-1">
+                        <!-- Inner Border -->
+                        <div class="w-full h-full border border-navy-900/30 flex flex-col items-center justify-between p-8 text-center relative overflow-hidden">
+                            
+                            <!-- Watermark -->
+                            <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
+                                <span class="font-heading font-extrabold text-9xl">CSR</span>
+                            </div>
+
+                            <!-- Header -->
+                            <div class="flex flex-col items-center z-10 w-full">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="w-12 h-12 bg-navy-900 flex items-center justify-center rounded-sm">
+                                        <!-- Simplified logo for white bg -->
+                                        <svg class="w-6 h-6 text-alpha-green" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex flex-col justify-center text-left">
+                                        <span class="font-heading font-extrabold text-xl tracking-wider text-navy-900 leading-none mb-1">CAPITAL SQUARE</span>
+                                        <span class="font-heading font-bold text-xs tracking-widest text-gray-500 leading-none">RESEARCH</span>
+                                    </div>
+                                </div>
+                                <h2 class="font-heading text-3xl font-bold tracking-widest uppercase text-navy-900 border-b-2 border-alpha-green pb-2 mb-2">Certificate of Completion</h2>
+                                <p class="font-sans text-sm tracking-widest text-gray-500 uppercase">Investment Research Internship Program</p>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="z-10 w-full my-8">
+                                <p class="italic text-gray-600 mb-6 font-serif text-lg">This is to certify that</p>
+                                <h1 id="cert-name" class="font-heading text-5xl font-bold text-navy-900 mb-6 tracking-wide">STUDENT NAME</h1>
+                                <p class="text-gray-600 max-w-lg mx-auto leading-relaxed">
+                                    has successfully completed the intensive Equity Research Internship, demonstrating proficiency in 3-statement financial modeling, DCF valuation, and automated data extraction.
+                                </p>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="flex justify-between w-full items-end z-10 border-t border-gray-200 pt-6 mt-auto">
+                                <div class="text-left">
+                                    <p class="font-mono text-xs text-gray-400 mb-1 uppercase tracking-wider">Credential ID</p>
+                                    <p id="cert-id" class="font-mono font-bold text-navy-900 tracking-wider">CSR-ID-XXXX</p>
+                                </div>
+                                
+                                <div class="text-right">
+                                    <p class="font-mono text-xs text-gray-400 mb-1 uppercase tracking-wider">Date of Issue</p>
+                                    <p id="cert-date" class="font-mono font-bold text-navy-900">Month DD, YYYY</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col justify-center pt-1">
+                <span class="font-heading font-extrabold text-lg tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                <div class="flex items-baseline">
+                    <span class="font-heading font-extrabold text-lg tracking-wider text-alpha-green leading-none">SQUARE</span>
+                    <span class="font-heading font-bold text-[0.75em] tracking-widest text-gray-400 ml-1.5 leading-none">RESEARCH</span>
+                </div>
+            </div>
+            
+            <div class="text-gray-400 text-sm">
+                &copy; <span id="year"></span> Capital Square Research. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.querySelector('button.mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+            }
+
+            // Check URL for ID parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchId = urlParams.get('id');
+            if (searchId) {
+                document.getElementById('cert-id-input').value = searchId;
+                verifyCertificate(searchId);
+            }
+        });
+
+        // Verification Logic
+        document.getElementById('verification-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const inputId = document.getElementById('cert-id-input').value.trim();
+            
+            // Update URL without reloading (cleaner UX)
+            const url = new URL(window.location);
+            url.searchParams.set('id', inputId);
+            window.history.pushState({}, '', url);
+
+            verifyCertificate(inputId);
+        });
+
+        function verifyCertificate(id) {
+            const statusMsg = document.getElementById('status-message');
+            const template = document.getElementById('certificate-template');
+            const controls = document.getElementById('result-controls');
+            
+            // Reset UI
+            statusMsg.className = 'mt-6 font-mono text-sm';
+            template.classList.add('hidden');
+            controls.classList.add('hidden');
+
+            if (!window.certificateDatabase) {
+                statusMsg.textContent = "> ERROR: Database disconnected.";
+                statusMsg.classList.add('text-red-500', 'block');
+                statusMsg.classList.remove('hidden');
+                return;
+            }
+
+            // Case-insensitive search
+            const record = window.certificateDatabase.find(
+                entry => entry.studentID.toLowerCase() === id.toLowerCase()
+            );
+
+            if (!record) {
+                statusMsg.textContent = "> ERROR: Credential ID not found in institutional database.";
+                statusMsg.classList.add('text-red-500', 'block');
+                statusMsg.classList.remove('hidden');
+                return;
+            }
+
+            if (record.internshipStatus !== 'Yes') {
+                statusMsg.textContent = `> STATUS: Internship incomplete for ${record.studentName}. Certificate unavailable.`;
+                statusMsg.classList.add('text-yellow-500', 'block');
+                statusMsg.classList.remove('hidden');
+                return;
+            }
+
+            // Success
+            statusMsg.classList.add('hidden');
+            
+            // Populate template
+            document.getElementById('cert-name').textContent = record.studentName;
+            document.getElementById('cert-id').textContent = record.studentID;
+            document.getElementById('cert-date').textContent = record.completionDate;
+
+            // Show certificate and controls
+            template.classList.remove('hidden');
+            controls.classList.remove('hidden');
+        }
+
+        // PDF Generation
+        document.getElementById('download-pdf-btn').addEventListener('click', () => {
+            const element = document.getElementById('certificate-template');
+            const name = document.getElementById('cert-name').textContent;
+            const btn = document.getElementById('download-pdf-btn');
+            
+            // Loading state
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Generating PDF...';
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
+            
+            // html2pdf configuration
+            const opt = {
+                margin:       0,
+                filename:     `CSR_Certificate_${name.replace(/\s+/g, '_')}.pdf`,
+                image:        { type: 'jpeg', quality: 1 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'px', format: [800, 600], orientation: 'landscape' }
+            };
+
+            // Temporarily ensure it's visible perfectly for capture
+            element.style.transform = 'none';
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.classList.remove('opacity-75', 'cursor-not-allowed');
+            });
+        });
+    </script>
+</body>
+</html>
