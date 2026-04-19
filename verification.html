@@ -134,54 +134,61 @@
             <div class="overflow-x-auto pb-8">
                 <!-- Actual Certificate Template (Hidden by default, shown on success) -->
                 <!-- We force a fixed width so the PDF generation is consistent regardless of screen size -->
-                <div id="certificate-template" class="hidden bg-white w-[800px] h-[600px] mx-auto relative p-12 text-navy-900 shadow-2xl">
+                <div id="certificate-template" class="hidden bg-navy-900 w-[1056px] h-[816px] mx-auto relative p-14 text-white shadow-[0_0_50px_rgba(0,230,118,0.15)] border border-gray-800">
+                    
+                    <!-- Decorative Background Orbs -->
+                    <div class="absolute top-0 right-0 -mr-32 -mt-32 w-[600px] h-[600px] bg-alpha-green opacity-5 rounded-full blur-[100px] pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 -ml-32 -mb-32 w-[600px] h-[600px] bg-blue-500 opacity-5 rounded-full blur-[100px] pointer-events-none"></div>
+
                     <!-- Outer Border -->
-                    <div class="absolute inset-4 border-2 border-navy-900 p-1">
+                    <div class="absolute inset-6 border-2 border-alpha-green/30 p-1.5 z-10">
                         <!-- Inner Border -->
-                        <div class="w-full h-full border border-navy-900/30 flex flex-col items-center justify-between p-8 text-center relative overflow-hidden">
+                        <div class="w-full h-full border border-gray-700/50 flex flex-col items-center justify-between p-12 text-center relative overflow-hidden bg-navy-900/40 backdrop-blur-sm">
                             
                             <!-- Watermark -->
-                            <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
-                                <span class="font-heading font-extrabold text-9xl">CSR</span>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none">
+                                <img src="assets/logo-main.png" alt="" class="w-[500px] h-auto grayscale">
                             </div>
 
                             <!-- Header -->
-                            <div class="flex flex-col items-center z-10 w-full">
-                                <div class="flex items-center gap-3 mb-6">
-                                    <div class="w-12 h-12 bg-navy-900 flex items-center justify-center rounded-sm">
-                                        <!-- Simplified logo for white bg -->
-                                        <svg class="w-6 h-6 text-alpha-green" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                                        </svg>
-                                    </div>
+                            <div class="flex flex-col items-center z-10 w-full mt-4">
+                                <div class="flex items-center gap-4 mb-10">
+                                    <img src="assets/logo-main.png" alt="Capital Square Logo" class="h-16 w-auto">
                                     <div class="flex flex-col justify-center text-left">
-                                        <span class="font-heading font-extrabold text-xl tracking-wider text-navy-900 leading-none mb-1">CAPITAL SQUARE</span>
-                                        <span class="font-heading font-bold text-xs tracking-widest text-gray-500 leading-none">RESEARCH</span>
+                                        <span class="font-heading font-extrabold text-3xl tracking-wider text-white leading-none mb-1">CAPITAL</span>
+                                        <div class="flex items-baseline">
+                                            <span class="font-heading font-extrabold text-3xl tracking-wider text-alpha-green leading-none">SQUARE</span>
+                                            <span class="font-heading font-bold text-sm tracking-widest text-gray-400 ml-2 leading-none">RESEARCH</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <h2 class="font-heading text-3xl font-bold tracking-widest uppercase text-navy-900 border-b-2 border-alpha-green pb-2 mb-2">Certificate of Completion</h2>
-                                <p class="font-sans text-sm tracking-widest text-gray-500 uppercase">Investment Research Internship Program</p>
+                                <h2 class="font-heading text-4xl font-bold tracking-widest uppercase text-white border-b-2 border-alpha-green pb-3 mb-3">Certificate of Completion</h2>
+                                <p class="font-sans text-base tracking-widest text-alpha-green uppercase">Investment Research Internship Program</p>
                             </div>
 
                             <!-- Body -->
-                            <div class="z-10 w-full my-8">
-                                <p class="italic text-gray-600 mb-6 font-serif text-lg">This is to certify that</p>
-                                <h1 id="cert-name" class="font-heading text-5xl font-bold text-navy-900 mb-6 tracking-wide">STUDENT NAME</h1>
-                                <p class="text-gray-600 max-w-lg mx-auto leading-relaxed">
+                            <div class="z-10 w-full my-auto">
+                                <p class="italic text-gray-400 mb-8 font-serif text-xl">This is to certify that</p>
+                                <h1 id="cert-name" class="font-heading text-6xl font-bold text-white mb-8 tracking-wide drop-shadow-lg">STUDENT NAME</h1>
+                                <p class="text-gray-300 max-w-2xl mx-auto leading-relaxed text-lg">
                                     has successfully completed the intensive Equity Research Internship, demonstrating proficiency in 3-statement financial modeling, DCF valuation, and automated data extraction.
                                 </p>
                             </div>
 
                             <!-- Footer -->
-                            <div class="flex justify-between w-full items-end z-10 border-t border-gray-200 pt-6 mt-auto">
+                            <div class="flex justify-between w-full items-end z-10 border-t border-gray-800 pt-8 mt-auto mb-4">
                                 <div class="text-left">
-                                    <p class="font-mono text-xs text-gray-400 mb-1 uppercase tracking-wider">Credential ID</p>
-                                    <p id="cert-id" class="font-mono font-bold text-navy-900 tracking-wider">CSR-ID-XXXX</p>
+                                    <p class="font-mono text-sm text-gray-500 mb-2 uppercase tracking-wider">Credential ID</p>
+                                    <p id="cert-id" class="font-mono font-bold text-white tracking-wider text-lg">CSR-ID-XXXX</p>
                                 </div>
                                 
+                                <div class="text-center pb-2">
+                                    <img src="assets/logo-main.png" alt="Seal" class="h-16 w-16 opacity-20 mx-auto">
+                                </div>
+
                                 <div class="text-right">
-                                    <p class="font-mono text-xs text-gray-400 mb-1 uppercase tracking-wider">Date of Issue</p>
-                                    <p id="cert-date" class="font-mono font-bold text-navy-900">Month DD, YYYY</p>
+                                    <p class="font-mono text-sm text-gray-500 mb-2 uppercase tracking-wider">Date of Issue</p>
+                                    <p id="cert-date" class="font-mono font-bold text-white text-lg">Month DD, YYYY</p>
                                 </div>
                             </div>
 
@@ -310,12 +317,13 @@
                 margin:       0,
                 filename:     `CSR_Certificate_${name.replace(/\s+/g, '_')}.pdf`,
                 image:        { type: 'jpeg', quality: 1 },
-                html2canvas:  { scale: 2, useCORS: true },
-                jsPDF:        { unit: 'px', format: [800, 600], orientation: 'landscape' }
+                html2canvas:  { scale: 2, useCORS: true, scrollY: 0, scrollX: 0 },
+                jsPDF:        { unit: 'in', format: [11, 8.5], orientation: 'landscape' }
             };
 
             // Temporarily ensure it's visible perfectly for capture
             element.style.transform = 'none';
+            window.scrollTo(0, 0); // Crucial for perfect PDF alignment
 
             html2pdf().set(opt).from(element).save().then(() => {
                 // Restore button
