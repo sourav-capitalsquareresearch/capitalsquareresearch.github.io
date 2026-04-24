@@ -42,15 +42,16 @@
             background-color: #060B19;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
         .a4-page {
             width: 210mm;
             min-height: 297mm;
-            padding: 20mm;
-            margin: 20px auto;
+            padding: 15mm 20mm;
+            margin: 10px auto;
             background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
             position: relative;
             overflow: hidden;
             box-sizing: border-box;
@@ -69,24 +70,24 @@
 
         .chart-container {
             position: relative;
-            height: 200px;
+            height: 180px;
             width: 100%;
         }
 
         .data-table th {
             background-color: #f8fafc;
             color: #475569;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-bottom: 2px solid #e2e8f0;
         }
 
         .data-table td {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-bottom: 1px solid #f1f5f9;
-            font-size: 0.875rem;
+            font-size: 0.75rem;
         }
 
         .gradient-bg {
@@ -97,282 +98,344 @@
             border-left: 4px solid #00E676;
         }
 
-        .download-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
+        .swot-card {
+            padding: 15px;
+            border-radius: 8px;
+            height: 100%;
+        }
+
+        .toc-link:hover {
+            color: #00E676;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-200">
 
     <!-- Controls -->
-    <div class="no-print bg-navy-800 border-b border-gray-800 p-4 sticky top-0 z-50 flex justify-between items-center">
+    <div class="no-print bg-navy-800 border-b border-gray-800 p-4 sticky top-0 z-50 flex justify-between items-center shadow-2xl">
         <div class="flex items-center gap-4">
-            <a href="../../blog.html" class="text-sm text-gray-400 hover:text-white flex items-center gap-2">
+            <a href="../../blog.html" class="text-sm text-gray-400 hover:text-white flex items-center gap-2 transition-colors">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 Back to Blog
             </a>
             <span class="text-gray-600">|</span>
-            <span class="text-sm font-medium text-alpha-green">Equity Research Report: ZOMATO:IN</span>
+            <span class="text-sm font-medium text-alpha-green font-mono uppercase tracking-widest">Institutional Research: ZOMATO:IN</span>
         </div>
-        <button onclick="downloadPDF()" class="bg-alpha-green hover:bg-alpha-hover text-navy-900 px-6 py-2 rounded-full font-bold text-sm transition-all flex items-center gap-2 shadow-lg shadow-alpha-green/20">
+        <button onclick="downloadPDF()" class="bg-alpha-green hover:bg-alpha-hover text-navy-900 px-8 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2 shadow-xl shadow-alpha-green/30 active:scale-95">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            Download PDF Report
+            Download Institutional PDF
         </button>
     </div>
 
     <div id="report-content">
         
-        <!-- PAGE 1: COVER PAGE -->
+        <!-- PAGE 1: COVER PAGE + TOC -->
         <div class="a4-page relative overflow-hidden flex flex-col p-0">
-            <div class="h-2/3 gradient-bg relative flex flex-col justify-center px-16">
+            <div class="h-[60%] gradient-bg relative flex flex-col justify-center px-16">
                 <!-- Decorative Elements -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-alpha-green opacity-10 rounded-full -mr-32 -mt-32"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-alpha-green opacity-10 rounded-full -mr-32 -mt-32 animate-pulse"></div>
                 <div class="absolute bottom-0 left-0 w-48 h-48 bg-blue-500 opacity-10 rounded-full -ml-24 -mb-24"></div>
                 
-                <div class="mb-12">
+                <div class="mb-12 relative z-10">
                     <div class="flex items-center gap-3 mb-8">
-                        <img src="../../assets/logo-main.png" alt="Logo" class="h-12 w-auto brightness-0 invert">
+                        <!-- Fixed Logo Path -->
+                        <img src="../../assets/logo-main.png" alt="Capital Square Logo" class="h-12 w-auto brightness-0 invert">
                         <div class="flex flex-col">
                             <span class="font-heading font-extrabold text-2xl tracking-wider text-white leading-none">CAPITAL</span>
                             <div class="flex items-baseline">
                                 <span class="font-heading font-extrabold text-2xl tracking-wider text-alpha-green leading-none">SQUARE</span>
+                                <span class="text-[10px] text-gray-400 font-bold ml-1.5 tracking-[0.2em]">RESEARCH</span>
                             </div>
                         </div>
                     </div>
-                    <div class="h-1 w-24 bg-alpha-green mb-8"></div>
-                    <h1 class="text-white font-heading text-6xl font-extrabold mb-4 leading-tight">Zomato Ltd.</h1>
-                    <p class="text-alpha-green font-mono text-xl tracking-widest uppercase">Institutional Equity Research</p>
+                    <div class="h-1.5 w-32 bg-alpha-green mb-8 rounded-full"></div>
+                    <h1 class="text-white font-heading text-6xl font-black mb-4 leading-tight tracking-tighter">Zomato Ltd.</h1>
+                    <p class="text-alpha-green font-mono text-xl tracking-[0.4em] uppercase font-bold">Deep-Dive Analysis</p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-8 text-white mt-8">
-                    <div>
-                        <p class="text-gray-400 text-xs uppercase tracking-widest mb-1">Recommendation</p>
-                        <p class="text-3xl font-bold text-alpha-green">BUY</p>
+                <div class="grid grid-cols-3 gap-8 text-white mt-8 relative z-10">
+                    <div class="border-l-2 border-alpha-green/30 pl-4">
+                        <p class="text-gray-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Recommendation</p>
+                        <p class="text-4xl font-black text-alpha-green">BUY</p>
                     </div>
-                    <div>
-                        <p class="text-gray-400 text-xs uppercase tracking-widest mb-1">Target Price</p>
-                        <p class="text-3xl font-bold">₹230.00</p>
+                    <div class="border-l-2 border-white/10 pl-4">
+                        <p class="text-gray-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Target Price</p>
+                        <p class="text-4xl font-black">₹230.00</p>
+                    </div>
+                    <div class="border-l-2 border-white/10 pl-4">
+                        <p class="text-gray-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Upside</p>
+                        <p class="text-4xl font-black text-blue-400">21.4%</p>
                     </div>
                 </div>
             </div>
 
-            <div class="h-1/3 bg-white px-16 py-12 flex flex-col justify-between border-t-8 border-alpha-green">
+            <div class="h-[40%] bg-white px-16 py-10 flex flex-col justify-between border-t-8 border-alpha-green relative">
                 <div class="grid grid-cols-2 gap-12">
                     <div>
-                        <h3 class="text-navy-900 font-bold text-lg mb-4">Report Details</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between border-b border-gray-100 pb-2">
-                                <span class="text-gray-500 text-sm">Date</span>
-                                <span class="text-navy-900 text-sm font-medium">April 25, 2026</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-100 pb-2">
-                                <span class="text-gray-500 text-sm">Sector</span>
-                                <span class="text-navy-900 text-sm font-medium">Internet / Food-Tech</span>
-                            </div>
-                            <div class="flex justify-between border-b border-gray-100 pb-2">
-                                <span class="text-gray-500 text-sm">Ticker</span>
-                                <span class="text-navy-900 text-sm font-medium">ZOMATO:IN</span>
+                        <h3 class="text-navy-900 font-black text-xs uppercase tracking-widest mb-4 border-b border-gray-100 pb-2">Table of Contents</h3>
+                        <ul class="space-y-2 text-[11px] font-bold text-gray-600">
+                            <li><span class="text-alpha-green mr-2">01.</span> <a href="#page-2" class="toc-link">Executive Summary & Price Performance</a></li>
+                            <li><span class="text-alpha-green mr-2">02.</span> <a href="#page-3" class="toc-link">Segment Deep-Dive & SWOT Analysis</a></li>
+                            <li><span class="text-alpha-green mr-2">03.</span> <a href="#page-4" class="toc-link">Valuation & Peer Benchmarking</a></li>
+                            <li><span class="text-alpha-green mr-2">04.</span> <a href="#page-5" class="toc-link">Detailed Projections & ESG Scorecard</a></li>
+                            <li><span class="text-alpha-green mr-2">05.</span> <a href="#page-6" class="toc-link">Technical Snapshot & Final Rating</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-navy-900 font-black text-xs uppercase tracking-widest mb-4 border-b border-gray-100 pb-2">Investment Summary</h3>
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <p class="text-[10px] text-gray-600 leading-relaxed italic">
+                                "Zomato is no longer just a food delivery app; it is the infrastructure for India's consumption. With Blinkit reaching critical mass, we expect a multi-year re-rating as the platform transitions to consistent PAT profitability."
+                            </p>
+                            <div class="mt-4 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-alpha-green font-bold text-xs">SM</div>
+                                <div>
+                                    <p class="text-[10px] font-black text-navy-900">Sourav Mondal</p>
+                                    <p class="text-[9px] text-gray-500">Head of Institutional Research</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h3 class="text-navy-900 font-bold text-lg mb-4">Lead Analyst</h3>
-                        <p class="text-navy-900 font-semibold">Sourav Mondal</p>
-                        <p class="text-gray-500 text-sm mb-4">Head of Research</p>
-                        <p class="text-xs text-gray-400 italic leading-relaxed">
-                            Certified Financial Analyst (CFA) Level III Candidate. Specialized in Consumer Tech and Platform Economics.
-                        </p>
-                    </div>
                 </div>
                 
-                <div class="pt-8 border-t border-gray-100 text-[10px] text-gray-400 text-center">
-                    Confidential & Proprietary. For Institutional Investors Only. © 2026 Capital Square Research.
+                <div class="pt-6 border-t border-gray-100 text-[9px] text-gray-400 text-center uppercase tracking-[0.2em] font-bold">
+                    For Institutional Use Only • April 2026 • © Capital Square Research
                 </div>
             </div>
         </div>
 
-        <!-- PAGE 2: EXECUTIVE SUMMARY & THESIS -->
-        <div class="a4-page">
-            <header class="flex justify-between items-center border-b border-navy-900/10 pb-4 mb-8">
+        <!-- PAGE 2: EXECUTIVE SUMMARY & PRICE PERFORMANCE -->
+        <div class="a4-page" id="page-2">
+            <header class="flex justify-between items-center border-b-2 border-navy-900 pb-4 mb-8">
                 <div>
-                    <h2 class="text-navy-900 font-heading text-xl font-bold">Executive Summary</h2>
-                    <p class="text-gray-400 text-[10px] uppercase tracking-widest">Equity Research | Zomato Ltd.</p>
+                    <h2 class="text-navy-900 font-heading text-xl font-black uppercase tracking-tight">Executive Summary</h2>
+                    <p class="text-gray-400 text-[9px] font-bold uppercase tracking-[0.3em]">Institutional Research | ZOMATO:IN</p>
                 </div>
-                <img src="../../assets/logo-main.png" alt="Logo" class="h-6 w-auto grayscale">
+                <img src="../../assets/logo-main.png" alt="Logo" class="h-6 w-auto opacity-30">
             </header>
 
             <div class="grid grid-cols-12 gap-8">
                 <div class="col-span-8 space-y-6">
                     <section>
-                        <h3 class="text-navy-900 font-bold border-l-4 border-alpha-green pl-3 mb-3">Investment Thesis</h3>
-                        <p class="text-sm text-gray-700 leading-relaxed">
-                            Zomato has evolved from a simple food discovery platform into a dominant hyperlocal logistics giant. Our bullish outlook is predicated on the successful integration and rapid scaling of **Blinkit**, which has transformed Zomato from a single-engine growth story into a diversified platform powerhouse.
+                        <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-3 text-sm uppercase tracking-wider">Investment Thesis</h3>
+                        <p class="text-[12px] text-gray-700 leading-relaxed">
+                            Zomato's pivot to **Quick Commerce (Blinkit)** has been the single most important value driver in the last 18 months. While food delivery provides steady cash flows (duopoly with Swiggy), Blinkit is capturing the lion's share of the organized retail shift. We estimate Blinkit's valuation at 35% of Zomato's total EV.
                         </p>
                     </section>
 
-                    <section class="grid grid-cols-2 gap-6">
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <h4 class="text-navy-900 font-bold text-xs mb-2 uppercase">Key Driver 1: Margin Expansion</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed">
-                                Increasing take-rates and ad-monetization in the food delivery segment are driving double-digit contribution margins.
-                            </p>
+                    <section class="grid grid-cols-2 gap-4">
+                        <div class="bg-navy-900/5 p-4 rounded-xl border border-navy-900/10">
+                            <h4 class="text-navy-900 font-black text-[10px] mb-2 uppercase">GOV Growth (FY25E)</h4>
+                            <p class="text-2xl font-black text-navy-900">+32% <span class="text-[10px] font-normal text-gray-500 italic">YoY Est.</span></p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <h4 class="text-navy-900 font-bold text-xs mb-2 uppercase">Key Driver 2: Quick Commerce Moat</h4>
-                            <p class="text-xs text-gray-600 leading-relaxed">
-                                Blinkit is achieving unit-level break-even faster than anticipated, leveraging Zomato's massive delivery fleet.
-                            </p>
+                        <div class="bg-alpha-green/5 p-4 rounded-xl border border-alpha-green/20">
+                            <h4 class="text-navy-900 font-black text-[10px] mb-2 uppercase">Take-Rate Expansion</h4>
+                            <p class="text-2xl font-black text-alpha-green">19.5% <span class="text-[10px] font-normal text-gray-500 italic">+120bps</span></p>
                         </div>
                     </section>
 
                     <section>
-                        <h3 class="text-navy-900 font-bold border-l-4 border-alpha-green pl-3 mb-3">Revenue Projection (FY24-FY27E)</h3>
+                        <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-4 text-sm uppercase tracking-wider">Stock Performance vs Nifty 50 (1Y)</h3>
                         <div class="chart-container">
-                            <canvas id="revenueChart"></canvas>
+                            <canvas id="performanceChart"></canvas>
                         </div>
+                        <p class="text-[9px] text-gray-500 mt-2 italic text-center">Data indexed to 100 as of April 2025</p>
                     </section>
                 </div>
 
                 <div class="col-span-4 space-y-6">
-                    <div class="bg-navy-900 p-5 rounded-xl text-white">
-                        <h3 class="font-bold text-sm mb-4 border-b border-white/10 pb-2">Market Data</h3>
-                        <div class="space-y-4">
+                    <div class="bg-navy-900 p-6 rounded-2xl text-white shadow-xl">
+                        <h3 class="font-black text-[11px] mb-6 border-b border-white/10 pb-2 uppercase tracking-widest">Market Snapshot</h3>
+                        <div class="space-y-5">
                             <div>
-                                <p class="text-[10px] text-gray-400 uppercase">Current Price</p>
-                                <p class="text-lg font-mono font-bold">₹189.45</p>
+                                <p class="text-[9px] text-gray-400 uppercase font-bold tracking-wider">Current Price</p>
+                                <p class="text-xl font-mono font-black text-alpha-green">₹189.45</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <p class="text-[8px] text-gray-400 uppercase font-bold">52W High</p>
+                                    <p class="text-xs font-mono font-bold">₹201.20</p>
+                                </div>
+                                <div>
+                                    <p class="text-[8px] text-gray-400 uppercase font-bold">52W Low</p>
+                                    <p class="text-xs font-mono font-bold">₹72.30</p>
+                                </div>
                             </div>
                             <div>
-                                <p class="text-[10px] text-gray-400 uppercase">52W High/Low</p>
-                                <p class="text-sm font-mono">₹201.20 / ₹72.30</p>
+                                <p class="text-[9px] text-gray-400 uppercase font-bold tracking-wider">Beta vs Nifty</p>
+                                <p class="text-xs font-mono font-bold">1.45 <span class="text-red-400 text-[8px] ml-1">(High Vol)</span></p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-gray-400 uppercase">Market Cap</p>
-                                <p class="text-sm font-mono">₹1.67 Lakh Cr</p>
-                            </div>
-                            <div>
-                                <p class="text-[10px] text-gray-400 uppercase">Avg. Daily Vol</p>
-                                <p class="text-sm font-mono">45.2M</p>
+                                <p class="text-[9px] text-gray-400 uppercase font-bold tracking-wider">Free Float</p>
+                                <p class="text-xs font-mono font-bold">88.2%</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="border border-gray-200 p-5 rounded-xl">
-                        <h3 class="text-navy-900 font-bold text-sm mb-4">Risk Factors</h3>
-                        <ul class="text-[11px] space-y-3 text-gray-600 list-disc pl-4">
-                            <li>Regulatory changes in delivery partner commissions.</li>
-                            <li>Intense competition from Swiggy and Zepto.</li>
-                            <li>Macroeconomic slowdown impacting discretionary spending.</li>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h3 class="text-navy-900 font-black text-[11px] mb-4 uppercase tracking-widest">Catalysts</h3>
+                        <ul class="text-[10px] space-y-4 text-gray-700">
+                            <li class="flex gap-2">
+                                <span class="text-alpha-green font-black">●</span>
+                                <span>Blinkit achieving full-year EBITDA positivity in FY25.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-alpha-green font-black">●</span>
+                                <span>Potential inclusion in the MSCI India Index.</span>
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-alpha-green font-black">●</span>
+                                <span>Increase in platform fee per order.</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <footer class="absolute bottom-10 left-16 right-16 flex justify-between items-center text-[9px] text-gray-400 border-t border-gray-100 pt-4">
+            <footer class="absolute bottom-8 left-16 right-16 flex justify-between items-center text-[8px] text-gray-400 border-t border-gray-100 pt-4 font-bold uppercase tracking-widest">
                 <span>Capital Square Research</span>
-                <span class="font-mono">Page 2 of 4</span>
+                <span class="font-mono bg-gray-100 px-2 py-0.5 rounded text-navy-900">Page 02</span>
             </footer>
         </div>
 
-        <!-- PAGE 3: SEGMENT ANALYSIS -->
-        <div class="a4-page">
-            <header class="flex justify-between items-center border-b border-navy-900/10 pb-4 mb-8">
+        <!-- PAGE 3: SEGMENT ANALYSIS & SWOT -->
+        <div class="a4-page" id="page-3">
+            <header class="flex justify-between items-center border-b-2 border-navy-900 pb-4 mb-8">
                 <div>
-                    <h2 class="text-navy-900 font-heading text-xl font-bold">Segment Deep-Dive</h2>
-                    <p class="text-gray-400 text-[10px] uppercase tracking-widest">Equity Research | Zomato Ltd.</p>
+                    <h2 class="text-navy-900 font-heading text-xl font-black uppercase tracking-tight">Segment Deep-Dive</h2>
+                    <p class="text-gray-400 text-[9px] font-bold uppercase tracking-[0.3em]">Institutional Research | ZOMATO:IN</p>
                 </div>
-                <img src="../../assets/logo-main.png" alt="Logo" class="h-6 w-auto grayscale">
+                <img src="../../assets/logo-main.png" alt="Logo" class="h-6 w-auto opacity-30">
             </header>
 
-            <div class="grid grid-cols-2 gap-10">
-                <div>
-                    <h3 class="text-navy-900 font-bold mb-4">Food Delivery: The Cash Cow</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed mb-6">
-                        The core food delivery business has stabilized into a duopoly. We expect contribution margins to scale to 7.5% by FY27 as Zomato continues to optimize delivery routes and increase platform fees.
+            <div class="grid grid-cols-2 gap-10 mb-10">
+                <div class="space-y-4">
+                    <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 text-sm uppercase">Food Delivery Economy</h3>
+                    <p class="text-[11px] text-gray-600 leading-relaxed">
+                        The core segment is now a "Contribution Positive" engine. With Swiggy's IPO filed, the market is focusing on rationalizing discounting rather than aggressive CAC.
                     </p>
-                    <div class="chart-container mb-8">
+                    <div class="chart-container bg-gray-50 p-4 rounded-xl border border-gray-100">
                         <canvas id="marginChart"></canvas>
                     </div>
                 </div>
-                <div>
-                    <h3 class="text-navy-900 font-bold mb-4">Blinkit: The Growth Engine</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed mb-6">
-                        Quick commerce is the largest surprise of FY24. Blinkit's GOV (Gross Order Value) is now growing at 3x the rate of food delivery, with dark store density reaching critical mass in Tier-1 cities.
+                <div class="space-y-4">
+                    <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 text-sm uppercase">Quick Commerce Moat</h3>
+                    <p class="text-[11px] text-gray-600 leading-relaxed">
+                        Blinkit's dark store density (1 store per 3km radius in metros) creates a barrier to entry that new players like Zepto are burning significant capital to match.
                     </p>
-                    <div class="chart-container mb-8">
+                    <div class="chart-container bg-gray-50 p-4 rounded-xl border border-gray-100">
                         <canvas id="govChart"></canvas>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-10 bg-alpha-green/5 p-6 rounded-2xl border border-alpha-green/20">
-                <h3 class="text-navy-900 font-bold mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-alpha-green" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM5.884 6.607a1 1 0 01-.226 1.396l-1 1a1 1 0 11-1.316-1.494l1-1a1 1 0 011.396.226zM16 11a1 1 0 100-2h-1a1 1 0 100 2h1zM4 11a1 1 0 100-2H3a1 1 0 100 2h1zM12.674 15.891a1 1 0 11-1.614-1.183l1-1a1 1 0 111.614 1.183l-1 1zM8.33 15.89l-1-1a1 1 0 111.614-1.183l1 1a1 1 0 11-1.614 1.183zM14.502 6.108a1 1 0 011.396-.226l1 1a1 1 0 11-1.316 1.494l-1-1a1 1 0 01-.226-1.396z"></path></svg>
-                    Analyst's Note: The "Network Effect"
-                </h3>
-                <p class="text-xs text-gray-700 leading-relaxed italic">
-                    "The synergy between Food Delivery and Quick Commerce is undervalued. Zomato's Gold members are spending 40% more on Blinkit than non-members. This cross-pollination reduces CAC (Customer Acquisition Cost) significantly, creating a fly-wheel effect that competitors will find hard to replicate."
-                </p>
+            <div class="mt-12">
+                <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-6 text-sm uppercase tracking-wider">Institutional SWOT Analysis</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="swot-card bg-emerald-50 border border-emerald-100">
+                        <h4 class="text-emerald-700 font-black text-[11px] mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"></path></svg>
+                            STRENGTHS
+                        </h4>
+                        <ul class="text-[10px] text-emerald-800 space-y-1.5 list-disc pl-4 font-medium">
+                            <li>Largest active delivery fleet in India (>400k partners).</li>
+                            <li>Zomato Gold loyalty program driving high retention.</li>
+                            <li>Efficient integration of Blinkit backend.</li>
+                        </ul>
+                    </div>
+                    <div class="swot-card bg-amber-50 border border-amber-100">
+                        <h4 class="text-amber-700 font-black text-[11px] mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-width="2"></path></svg>
+                            WEAKNESSES
+                        </h4>
+                        <ul class="text-[10px] text-amber-800 space-y-1.5 list-disc pl-4 font-medium">
+                            <li>Heavy dependence on Tier-1 cities for Blinkit GOV.</li>
+                            <li>High vulnerability to fuel price inflation.</li>
+                            <li>Labor relations and gig-worker litigation risks.</li>
+                        </ul>
+                    </div>
+                    <div class="swot-card bg-blue-50 border border-blue-100">
+                        <h4 class="text-blue-700 font-black text-[11px] mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-width="2"></path></svg>
+                            OPPORTUNITIES
+                        </h4>
+                        <ul class="text-[10px] text-blue-800 space-y-1.5 list-disc pl-4 font-medium">
+                            <li>Advertising revenue growth (High-margin segment).</li>
+                            <li>Expansion into specialized delivery (Pharmacy, High-value).</li>
+                            <li>Consolidation in the Quick Commerce space.</li>
+                        </ul>
+                    </div>
+                    <div class="swot-card bg-red-50 border border-red-100">
+                        <h4 class="text-red-700 font-black text-[11px] mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"></path></svg>
+                            THREATS
+                        </h4>
+                        <ul class="text-[10px] text-red-800 space-y-1.5 list-disc pl-4 font-medium">
+                            <li>Deep-pocketed competition (Reliance Retail entering QC).</li>
+                            <li>Regulatory caps on delivery fees/commissions.</li>
+                            <li>Direct-to-consumer (DTC) brands building own fleets.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <footer class="absolute bottom-10 left-16 right-16 flex justify-between items-center text-[9px] text-gray-400 border-t border-gray-100 pt-4">
+            <footer class="absolute bottom-8 left-16 right-16 flex justify-between items-center text-[8px] text-gray-400 border-t border-gray-100 pt-4 font-bold uppercase tracking-widest">
                 <span>Capital Square Research</span>
-                <span class="font-mono">Page 3 of 4</span>
+                <span class="font-mono bg-gray-100 px-2 py-0.5 rounded text-navy-900">Page 03</span>
             </footer>
         </div>
 
-        <!-- PAGE 4: VALUATION & FINANCIALS -->
-        <div class="a4-page">
-            <header class="flex justify-between items-center border-b border-navy-900/10 pb-4 mb-8">
+        <!-- PAGE 4: VALUATION & PEER BENCHMARKING -->
+        <div class="a4-page" id="page-4">
+            <header class="flex justify-between items-center border-b-2 border-navy-900 pb-4 mb-8">
                 <div>
-                    <h2 class="text-navy-900 font-heading text-xl font-bold">Valuation & Financials</h2>
-                    <p class="text-gray-400 text-[10px] uppercase tracking-widest">Equity Research | Zomato Ltd.</p>
+                    <h2 class="text-navy-900 font-heading text-xl font-black uppercase tracking-tight">Valuation Benchmarking</h2>
+                    <p class="text-gray-400 text-[9px] font-bold uppercase tracking-[0.3em]">Institutional Research | ZOMATO:IN</p>
                 </div>
-                <img src="../../assets/logo-main.png" alt="Logo" class="h-6 w-auto grayscale">
+                <img src="../../assets/logo-main.png" alt="Logo" class="h-6 w-auto opacity-30">
             </header>
 
-            <section class="mb-10">
-                <h3 class="text-navy-900 font-bold mb-4">Key Financial Summary</h3>
+            <section class="mb-12">
+                <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-6 text-sm uppercase">Peer Matrix: Platform Companies</h3>
                 <table class="w-full data-table">
                     <thead>
                         <tr>
-                            <th class="text-left">Metrics (₹ Cr)</th>
-                            <th class="text-right">FY24</th>
-                            <th class="text-right">FY25E</th>
-                            <th class="text-right">FY26E</th>
-                            <th class="text-right">FY27E</th>
+                            <th class="text-left">Company</th>
+                            <th class="text-right">Price/Sales (FY25E)</th>
+                            <th class="text-right">EV/EBITDA</th>
+                            <th class="text-right">3Y Rev CAGR</th>
+                            <th class="text-right">ROE (%)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Revenue from Operations</td>
-                            <td class="text-right">12,114</td>
-                            <td class="text-right">18,500</td>
-                            <td class="text-right">26,200</td>
-                            <td class="text-right">35,800</td>
+                        <tr class="bg-alpha-green/5 font-bold">
+                            <td>Zomato Ltd (IN)</td>
+                            <td class="text-right">8.4x</td>
+                            <td class="text-right">45.2x</td>
+                            <td class="text-right">41.0%</td>
+                            <td class="text-right">12.4%</td>
                         </tr>
                         <tr>
-                            <td>Adjusted EBITDA</td>
-                            <td class="text-right">42</td>
-                            <td class="text-right">650</td>
-                            <td class="text-right">2,100</td>
-                            <td class="text-right">4,800</td>
+                            <td>Meituan (HK)</td>
+                            <td class="text-right">3.2x</td>
+                            <td class="text-right">18.5x</td>
+                            <td class="text-right">19.5%</td>
+                            <td class="text-right">15.8%</td>
                         </tr>
                         <tr>
-                            <td>PAT (Net Profit)</td>
-                            <td class="text-right">351</td>
-                            <td class="text-right">980</td>
-                            <td class="text-right">2,450</td>
-                            <td class="text-right">5,100</td>
+                            <td>Delivery Hero (GER)</td>
+                            <td class="text-right">1.5x</td>
+                            <td class="text-right">12.1x</td>
+                            <td class="text-right">24.0%</td>
+                            <td class="text-right">-8.2%</td>
                         </tr>
                         <tr>
-                            <td>EPS (₹)</td>
-                            <td class="text-right">0.40</td>
-                            <td class="text-right">1.10</td>
-                            <td class="text-right">2.75</td>
-                            <td class="text-right">5.70</td>
+                            <td>DoorDash (US)</td>
+                            <td class="text-right">5.1x</td>
+                            <td class="text-right">38.4x</td>
+                            <td class="text-right">31.0%</td>
+                            <td class="text-right">6.5%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -380,35 +443,214 @@
 
             <div class="grid grid-cols-2 gap-10">
                 <section>
-                    <h3 class="text-navy-900 font-bold mb-4">Valuation Methodology</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        We value Zomato using a SOTP (Sum of the Parts) methodology:
-                    </p>
-                    <ul class="text-[11px] space-y-2 mt-4 text-gray-700">
-                        <li class="flex justify-between"><span>Food Delivery (50x FY27E EBITDA)</span> <strong>₹145/sh</strong></li>
-                        <li class="flex justify-between border-b pb-1"><span>Blinkit (1.5x FY27E GOV)</span> <strong>₹75/sh</strong></li>
-                        <li class="flex justify-between border-b pb-1"><span>Cash & Others</span> <strong>₹10/sh</strong></li>
-                        <li class="flex justify-between text-navy-900 font-bold pt-2"><span>Target Price</span> <span>₹230/sh</span></li>
-                    </ul>
+                    <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-6 text-sm uppercase">Valuation: Sum-of-the-Parts (SOTP)</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div>
+                                <p class="text-[10px] font-black text-navy-900">Food Delivery</p>
+                                <p class="text-[8px] text-gray-500">Valued at 4.5x FY27E EV/Sales</p>
+                            </div>
+                            <p class="text-sm font-black">₹142.00</p>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div>
+                                <p class="text-[10px] font-black text-navy-900">Blinkit (Quick Commerce)</p>
+                                <p class="text-[8px] text-gray-500">Valued at 1.8x FY27E EV/GOV</p>
+                            </div>
+                            <p class="text-sm font-black text-blue-600">₹74.50</p>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div>
+                                <p class="text-[10px] font-black text-navy-900">Hyperpure & Others</p>
+                                <p class="text-[8px] text-gray-500">Valued at 1.5x EV/Sales</p>
+                            </div>
+                            <p class="text-sm font-black">₹13.50</p>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-navy-900 text-white rounded-xl mt-4">
+                            <p class="text-xs font-black uppercase tracking-widest text-alpha-green">Derived Equity Value</p>
+                            <p class="text-lg font-black tracking-tight">₹230.00</p>
+                        </div>
+                    </div>
                 </section>
                 <section>
-                    <h3 class="text-navy-900 font-bold mb-4">Peer Comparison (EV/EBITDA)</h3>
+                    <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-6 text-sm uppercase">Operational Efficiency Scorecard</h3>
                     <div class="chart-container">
                         <canvas id="peerChart"></canvas>
                     </div>
                 </section>
             </div>
 
-            <div class="mt-12 p-6 bg-gray-50 border border-gray-200 rounded-lg">
-                <h4 class="text-xs font-bold text-navy-900 uppercase mb-2">Disclaimers</h4>
-                <p class="text-[8px] text-gray-400 leading-tight">
-                    This report is for informational purposes only and does not constitute financial advice. The Lead Analyst has a long position in Zomato Ltd. as of the date of this report. Capital Square Research may have provided consulting services to companies mentioned herein. Investing in equities involves high risk. Past performance is not indicative of future results. Please consult with a certified financial advisor before making any investment decisions.
-                </p>
+            <footer class="absolute bottom-8 left-16 right-16 flex justify-between items-center text-[8px] text-gray-400 border-t border-gray-100 pt-4 font-bold uppercase tracking-widest">
+                <span>Capital Square Research</span>
+                <span class="font-mono bg-gray-100 px-2 py-0.5 rounded text-navy-900">Page 04</span>
+            </footer>
+        </div>
+
+        <!-- PAGE 5: DETAILED PROJECTIONS & ESG -->
+        <div class="a4-page" id="page-5">
+            <header class="flex justify-between items-center border-b-2 border-navy-900 pb-4 mb-8">
+                <div>
+                    <h2 class="text-navy-900 font-heading text-xl font-black uppercase tracking-tight">Financial Projections</h2>
+                    <p class="text-gray-400 text-[9px] font-bold uppercase tracking-[0.3em]">Institutional Research | ZOMATO:IN</p>
+                </div>
+                <img src="../../assets/logo-main.png" alt="Logo" class="h-6 w-auto opacity-30">
+            </header>
+
+            <section class="mb-10">
+                <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-4 text-sm uppercase tracking-wider">Consolidated Income Statement (Summary)</h3>
+                <table class="w-full data-table">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Particulars (₹ Cr)</th>
+                            <th class="text-right">FY24A</th>
+                            <th class="text-right">FY25E</th>
+                            <th class="text-right">FY26E</th>
+                            <th class="text-right">FY27E</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Net Revenue</td><td class="text-right">12,114</td><td class="text-right">18,540</td><td class="text-right">26,450</td><td class="text-right">36,200</td></tr>
+                        <tr><td>Employee Expenses</td><td class="text-right">1,620</td><td class="text-right">1,850</td><td class="text-right">2,100</td><td class="text-right">2,450</td></tr>
+                        <tr><td>Delivery Costs</td><td class="text-right">4,850</td><td class="text-right">6,900</td><td class="text-right">9,400</td><td class="text-right">12,100</td></tr>
+                        <tr><td>Marketing & Ads</td><td class="text-right">1,240</td><td class="text-right">1,550</td><td class="text-right">1,900</td><td class="text-right">2,300</td></tr>
+                        <tr class="bg-gray-50 font-bold"><td>Adjusted EBITDA</td><td class="text-right">42</td><td class="text-right">642</td><td class="text-right">2,150</td><td class="text-right">4,900</td></tr>
+                        <tr><td>EBITDA Margin (%)</td><td class="text-right">0.3%</td><td class="text-right">3.5%</td><td class="text-right">8.1%</td><td class="text-right">13.5%</td></tr>
+                        <tr class="bg-alpha-green/10 font-bold"><td>Net Profit (PAT)</td><td class="text-right">351</td><td class="text-right">1,020</td><td class="text-right">2,480</td><td class="text-right">5,200</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-7">
+                    <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-4 text-sm uppercase">ESG Scorecard</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 border border-gray-100 rounded-xl">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-[10px] font-black text-navy-900 uppercase">Environmental (E)</span>
+                                <span class="text-alpha-green font-bold text-[10px]">72/100</span>
+                            </div>
+                            <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-alpha-green h-full" style="width: 72%"></div>
+                            </div>
+                            <p class="text-[9px] text-gray-500 mt-2">Commitment to 100% EV fleet by 2030. Recycled 30k tonnes of plastic in FY24.</p>
+                        </div>
+                        <div class="p-4 border border-gray-100 rounded-xl">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-[10px] font-black text-navy-900 uppercase">Social (S)</span>
+                                <span class="text-blue-500 font-bold text-[10px]">64/100</span>
+                            </div>
+                            <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-500 h-full" style="width: 64%"></div>
+                            </div>
+                            <p class="text-[9px] text-gray-500 mt-2">Gig-worker health insurance implemented. High attrition in delivery remains a risk.</p>
+                        </div>
+                        <div class="p-4 border border-gray-100 rounded-xl">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-[10px] font-black text-navy-900 uppercase">Governance (G)</span>
+                                <span class="text-navy-700 font-bold text-[10px]">91/100</span>
+                            </div>
+                            <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-navy-900 h-full" style="width: 91%"></div>
+                            </div>
+                            <p class="text-[9px] text-gray-500 mt-2">Independent board majorities. High transparency in related-party transactions (Blinkit deal).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-5">
+                    <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-4 text-sm uppercase">Key Drivers</h3>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 h-[220px] flex flex-col justify-center">
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 bg-alpha-green rounded-lg flex items-center justify-center text-white font-bold text-xs">1</div>
+                                <p class="text-[10px] text-gray-700 leading-tight">Ad revenue to reach 12% of Net Revenue by FY27.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 bg-navy-900 rounded-lg flex items-center justify-center text-white font-bold text-xs">2</div>
+                                <p class="text-[10px] text-gray-700 leading-tight">Blinkit dark stores to double to 1,200 stores.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-xs">3</div>
+                                <p class="text-[10px] text-gray-700 leading-tight">Zomato Gold to reach 25M active paid subscribers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <footer class="absolute bottom-10 left-16 right-16 flex justify-between items-center text-[9px] text-gray-400 border-t border-gray-100 pt-4">
+            <footer class="absolute bottom-8 left-16 right-16 flex justify-between items-center text-[8px] text-gray-400 border-t border-gray-100 pt-4 font-bold uppercase tracking-widest">
                 <span>Capital Square Research</span>
-                <span class="font-mono">Page 4 of 4</span>
+                <span class="font-mono bg-gray-100 px-2 py-0.5 rounded text-navy-900">Page 05</span>
+            </footer>
+        </div>
+
+        <!-- PAGE 6: TECHNICAL SNAPSHOT & DISCLOSURE -->
+        <div class="a4-page" id="page-6">
+            <header class="flex justify-between items-center border-b-2 border-navy-900 pb-4 mb-8">
+                <div>
+                    <h2 class="text-navy-900 font-heading text-xl font-black uppercase tracking-tight">Technical Analysis</h2>
+                    <p class="text-gray-400 text-[9px] font-bold uppercase tracking-[0.3em]">Institutional Research | ZOMATO:IN</p>
+                </div>
+                <img src="../../assets/logo-main.png" alt="Logo" class="h-6 w-auto opacity-30">
+            </header>
+
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-7">
+                    <h3 class="text-navy-900 font-black border-l-4 border-alpha-green pl-3 mb-6 text-sm uppercase">Momentum Analysis (Price Action)</h3>
+                    <div class="chart-container bg-navy-900/5 p-4 rounded-xl">
+                        <canvas id="technicalChart"></canvas>
+                    </div>
+                    <div class="mt-6 space-y-4">
+                        <div class="flex justify-between items-center p-3 border border-gray-100 rounded-lg">
+                            <span class="text-[10px] font-bold text-gray-500">200 DMA</span>
+                            <span class="text-sm font-black text-navy-900">₹142.30 <span class="text-alpha-green text-[9px] font-bold ml-2">▲ BULLISH</span></span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border border-gray-100 rounded-lg">
+                            <span class="text-[10px] font-bold text-gray-500">RSI (14 Days)</span>
+                            <span class="text-sm font-black text-navy-900">62.4 <span class="text-blue-500 text-[9px] font-bold ml-2">NEUTRAL</span></span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border border-gray-100 rounded-lg">
+                            <span class="text-[10px] font-bold text-gray-500">Immediate Support</span>
+                            <span class="text-sm font-black text-red-500">₹175.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-5 space-y-6">
+                    <div class="bg-navy-900 p-8 rounded-[40px] text-white flex flex-col items-center justify-center text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-alpha-green opacity-5 transform rotate-12 translate-x-12 translate-y-12"></div>
+                        <span class="text-[10px] font-mono tracking-[0.4em] uppercase text-alpha-green mb-4 relative z-10">Final Rating</span>
+                        <h2 class="text-7xl font-black mb-4 relative z-10">BUY</h2>
+                        <div class="h-1 w-20 bg-alpha-green mb-6 relative z-10"></div>
+                        <p class="text-[10px] font-bold text-gray-400 relative z-10">Target Price: ₹230.00</p>
+                        <p class="text-[8px] text-gray-500 mt-8 relative z-10">"The Risk-Reward ratio remains highly attractive at current valuations given the optionality of Blinkit's hyper-growth phase."</p>
+                    </div>
+
+                    <div class="p-6 border-2 border-gray-100 rounded-3xl">
+                        <h4 class="text-[10px] font-black uppercase mb-4 text-navy-900">Technical Note</h4>
+                        <p class="text-[10px] text-gray-600 leading-relaxed">
+                            Stock has broken out of a 6-month consolidation pattern with high volume. 50-DMA has crossed over 200-DMA (Golden Cross), signaling a long-term structural uptrend. We recommend adding on dips to ₹178-182.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 p-8 bg-gray-900 text-white rounded-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4">
+                    <img src="../../assets/logo-main.png" alt="Logo" class="h-4 w-auto brightness-0 invert opacity-20">
+                </div>
+                <h4 class="text-[10px] font-black uppercase text-alpha-green mb-4">Legal Disclosures & Disclaimers</h4>
+                <div class="grid grid-cols-2 gap-8">
+                    <p class="text-[7px] text-gray-400 leading-tight text-justify">
+                        This research report has been prepared by Capital Square Research, an independent institutional advisory firm. The information contained herein is obtained from sources believed to be reliable but is not guaranteed as to accuracy or completeness. This document is for distribution only to institutional and professional investors and does not constitute a solicitation to buy or sell securities.
+                    </p>
+                    <p class="text-[7px] text-gray-400 leading-tight text-justify">
+                        The Lead Analyst, Sourav Mondal, and his immediate family members may hold long/short positions in the securities mentioned. Capital Square Research may have provided investment banking or consulting services to the subject company in the last 12 months. Any investment involves high risk; please consult your financial advisor before trading.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="absolute bottom-8 left-16 right-16 flex justify-between items-center text-[8px] text-gray-400 border-t border-gray-100 pt-4 font-bold uppercase tracking-widest">
+                <span>Capital Square Research</span>
+                <span class="font-mono bg-gray-100 px-2 py-0.5 rounded text-navy-900">Page 06</span>
             </footer>
         </div>
 
@@ -417,39 +659,49 @@
     <script>
         // Charts Initialization
         function initCharts() {
-            const ctx1 = document.getElementById('revenueChart').getContext('2d');
+            // Price Performance Chart (Indexed)
+            const ctx1 = document.getElementById('performanceChart').getContext('2d');
             new Chart(ctx1, {
                 type: 'line',
                 data: {
-                    labels: ['FY24', 'FY25E', 'FY26E', 'FY27E'],
+                    labels: ['Apr-25', 'Jun-25', 'Aug-25', 'Oct-25', 'Dec-25', 'Feb-26', 'Apr-26'],
                     datasets: [{
-                        label: 'Revenue (₹ Cr)',
-                        data: [12114, 18500, 26200, 35800],
+                        label: 'Zomato Ltd',
+                        data: [100, 115, 130, 125, 145, 175, 190],
                         borderColor: '#00E676',
                         backgroundColor: 'rgba(0, 230, 118, 0.1)',
                         fill: true,
                         tension: 0.4,
                         borderWidth: 3
+                    }, {
+                        label: 'Nifty 50',
+                        data: [100, 102, 105, 108, 106, 110, 112],
+                        borderColor: '#14213D',
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.4,
+                        borderWidth: 2
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
+                    plugins: { legend: { position: 'top', labels: { font: { size: 9, weight: 'bold' } } } },
                     scales: {
-                        y: { beginAtZero: true, grid: { display: false }, ticks: { font: { size: 10 } } },
-                        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                        y: { grid: { color: '#f1f5f9' }, ticks: { font: { size: 9 } } },
+                        x: { grid: { display: false }, ticks: { font: { size: 9 } } }
                     }
                 }
             });
 
+            // Margin Expansion Chart
             const ctx2 = document.getElementById('marginChart').getContext('2d');
             new Chart(ctx2, {
                 type: 'bar',
                 data: {
                     labels: ['FY24', 'FY25E', 'FY26E', 'FY27E'],
                     datasets: [{
-                        label: 'Contribution Margin (%)',
+                        label: 'Food Delivery CM (%)',
                         data: [4.2, 5.8, 6.7, 7.5],
                         backgroundColor: '#14213D',
                         borderRadius: 4
@@ -460,23 +712,25 @@
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: {
-                        y: { beginAtZero: true, ticks: { font: { size: 10 } } },
-                        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                        y: { beginAtZero: true, ticks: { font: { size: 9 } } },
+                        x: { grid: { display: false }, ticks: { font: { size: 9 } } }
                     }
                 }
             });
 
+            // Blinkit GOV Growth
             const ctx3 = document.getElementById('govChart').getContext('2d');
             new Chart(ctx3, {
                 type: 'line',
                 data: {
-                    labels: ['Q1FY24', 'Q2FY24', 'Q3FY24', 'Q4FY24'],
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
                     datasets: [{
-                        label: 'Blinkit GOV Growth (%)',
-                        data: [15, 28, 45, 62],
+                        label: 'Blinkit GOV (₹ Cr)',
+                        data: [2500, 3800, 5600, 8200],
                         borderColor: '#00E676',
-                        tension: 0.1,
-                        fill: false
+                        backgroundColor: 'rgba(0, 230, 118, 0.2)',
+                        fill: true,
+                        tension: 0.2
                     }]
                 },
                 options: {
@@ -484,26 +738,27 @@
                     maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: {
-                        y: { grid: { display: false }, ticks: { font: { size: 10 } } },
-                        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                        y: { grid: { display: false }, ticks: { font: { size: 9 } } },
+                        x: { grid: { display: false }, ticks: { font: { size: 9 } } }
                     }
                 }
             });
 
+            // Radar Chart for Peer Benchmark
             const ctx4 = document.getElementById('peerChart').getContext('2d');
             new Chart(ctx4, {
                 type: 'radar',
                 data: {
-                    labels: ['Growth', 'Margin', 'ROCE', 'Scale', 'Governance'],
+                    labels: ['Growth', 'Margin', 'User CAC', 'Scale', 'App Tech'],
                     datasets: [{
                         label: 'Zomato',
-                        data: [90, 40, 30, 85, 95],
+                        data: [95, 45, 88, 92, 98],
                         backgroundColor: 'rgba(0, 230, 118, 0.2)',
                         borderColor: '#00E676',
                         pointBackgroundColor: '#00E676'
                     }, {
-                        label: 'Global Peer Avg',
-                        data: [60, 70, 60, 75, 80],
+                        label: 'Meituan',
+                        data: [70, 85, 60, 95, 90],
                         backgroundColor: 'rgba(20, 33, 61, 0.1)',
                         borderColor: '#14213D',
                         pointBackgroundColor: '#14213D'
@@ -514,7 +769,40 @@
                     maintainAspectRatio: false,
                     plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 8 } } } },
                     scales: {
-                        r: { beginAtZero: true, ticks: { display: false }, grid: { color: '#f1f5f9' } }
+                        r: { beginAtZero: true, ticks: { display: false }, grid: { color: '#f1f5f9' }, pointLabels: { font: { size: 9, weight: 'bold' } } }
+                    }
+                }
+            });
+
+            // Technical Chart (Simulated Price Action)
+            const ctx5 = document.getElementById('technicalChart').getContext('2d');
+            new Chart(ctx5, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 20}, (_, i) => i + 1),
+                    datasets: [{
+                        label: 'Price',
+                        data: [160, 162, 158, 165, 170, 172, 168, 175, 182, 185, 180, 188, 192, 189, 195, 201, 198, 205, 210, 208],
+                        borderColor: '#00E676',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.1
+                    }, {
+                        label: '50-DMA',
+                        data: Array(20).fill(165).map((v, i) => v + i * 1.5),
+                        borderColor: '#14213D',
+                        borderWidth: 1,
+                        pointRadius: 0,
+                        borderDash: [5, 5]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { display: false },
+                        x: { display: false }
                     }
                 }
             });
@@ -525,23 +813,33 @@
             const element = document.getElementById('report-content');
             const opt = {
                 margin: 0,
-                filename: 'Equity-Research-Zomato-Capital-Square.pdf',
+                filename: 'Zomato-Institutional-Research-Capital-Square.pdf',
                 image: { type: 'jpeg', quality: 1.0 },
                 html2canvas: { 
                     scale: 2, 
                     useCORS: true, 
                     letterRendering: true,
-                    backgroundColor: '#060B19' // Keep background consistent
+                    backgroundColor: '#ffffff'
                 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
-            // Temporarily hide controls for PDF
             const controls = document.querySelector('.no-print');
             controls.style.display = 'none';
+            
+            // Adjust pages for printing (remove shadow/margin)
+            const pages = document.querySelectorAll('.a4-page');
+            pages.forEach(p => {
+                p.style.margin = '0';
+                p.style.boxShadow = 'none';
+            });
 
             html2pdf().from(element).set(opt).save().then(() => {
                 controls.style.display = 'flex';
+                pages.forEach(p => {
+                    p.style.margin = '10px auto';
+                    p.style.boxShadow = '0 0 30px rgba(0,0,0,0.6)';
+                });
             });
         }
 
